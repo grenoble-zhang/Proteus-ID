@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Proteus-ID: ID-Consistent and Motion-Coherent Video Customization.">
+  <meta name="keywords" content="Text-to-video generation, Identity Preservatio, Portrait Animation, Motion Coherence">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proteus-ID: ID-Consistent and Motion-Coherent Video Customization</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Proteus-ID: ID-Consistent and Motion-Coherent Video Customization</h1>
+          <div class="is-size-4 publication-authors">
+            <div class="author-row">
+              <span class="author-block" style="font-size: 28px;">
+              </span>
+            </div>
+            <div class="author-row">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=NLPMoeAAAAAJ">Guiyu Zhang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com.hk/citations?user=o-K_AoYAAAAJ&hl=en">Chen Shi</a><sup>1</sup>,</span>
+                <span class="author-block">
+                  Zijian Jiang</a><sup>1</sup>,</span>
+                <span class="author-block">
+                Xunzhi Xiang</a><sup>2</sup>,</span>
+            </div>
+            <div class="author-row">
+              <span class="author-block">
+                Jingjing Qian<sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://shishaoshuai.com/">Shaoshuai Shi</a><sup>3</sup>,</span>
+              <span class="author-block">
+              <a href="https://llijiang.github.io/">Li Jiang</a><sup>1†</sup></span>
+            </div>
+          </div>
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block"><sup>1</sup>The Chinese University of Hong Kong, Shenzhen,</span>
+            <span class="author-block"><sup>2</sup>Nanjing University,</span>
+            <span class="author-block"><sup>3</sup>Voyager Research, Didi Chuxing</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="http://127.0.0.1:5500/index.html"
+                   class="external-link button is-normal is-rounded is-dark"
+                   style="font-size: 18px; padding: 12px 24px;">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="http://127.0.0.1:5500/index.html"
+                   class="external-link button is-normal is-rounded is-dark"
+                        style="font-size: 18px; padding: 12px 24px;">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="http://127.0.0.1:5500/index.html"
+                   class="external-link button is-normal is-rounded is-dark"
+                   style="font-size: 18px; padding: 12px 24px;">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top: -6rem;">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified" style="font-size: 20px;">
+          <p>
+            Video identity customization seeks to synthesize realistic, temporally coherent videos of a specific subject,
+             given a single reference image and a text prompt. This task presents <b>two core challenges</b>:
+              (1) maintaining identity consistency while aligning with the described appearance and actions,
+               and (2) generating natural, fluid motion without unrealistic stiffness. To address these challenges,
+                we introduce Proteus-ID, a novel diffusion-based framework for identity-consistent and motion-coherent video customization.
+                 First, we propose a <b>Multimodal Identity Fusion (MIF) module</b> that unifies visual and textual cues into a joint identity
+                  representation using a Q-Former, providing coherent guidance to the diffusion model and eliminating modality imbalance.
+                   Second, we present a <b>Time-Aware Identity Injection (TAII) mechanism</b> that dynamically modulates identity conditioning
+                    across denoising steps, improving fine-detail reconstruction. Third, we propose <b>Adaptive Motion Learning (AML)</b>,
+                     a self-supervised strategy that reweights the training loss based on optical-flow-derived motion heatmaps,
+                      enhancing motion realism without requiring additional inputs. 
+                      To support this task, we construct <b>Proteus-Bench</b>, a high-quality dataset comprising 200K curated clips for training
+                       and 150 individuals from diverse professions and ethnicities for evaluation. 
+                      Extensive experiments demonstrate that Proteus-ID outperforms prior methods in identity preservation,
+                       text alignment, and motion quality, establishing a new benchmark for video identity customization.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="margin-top: -0rem; margin-bottom: 20px">Video</h2>
+    
+        <!-- <video controls poster="https://github.com/user-attachments/assets/634248f6-1b54-4963-88d6-34fa7263750b">
+          <source src="https://github.com/SHYuanBest/shyuanbest_media/raw/refs/heads/main/ConsisID/showcase_videos.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video> -->
+
+        <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+          <iframe 
+            src="https://www.youtube.com/embed/HF5dvG1B2XE"
+            title="YouTube video player" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" >
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview of Proteus-ID</h2>
+        <img src="static\assets\method.jpg" alt="framework">
+        <div class="content has-text-justified" style="font-size: 18.5px;">
+          <p>
+            Built on a pre-trained DiT, Proteus-ID integrates three key components:
+            <b>Multimodal Identity Fusion (MIF)</b>, <b>Time-Aware Identity Injection (TAII)</b>,
+              and <b>Adaptive Motion Learning (AML)</b>. Given a reference image and user prompt,
+               MIF uses a Q-Former to <b>integrate identity text embeddings with visual features prior</b> to denoising.
+                TAII <b>incorporates timestep embeddings</b> to adaptively modulate identity conditioning during denoising.
+                 AML enhances motion realism by introducing a <b>self-supervised motion signal</b> to reweight
+                  the training loss—without requiring additional inputs at inference.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Method. -->
+</section>
+
+<div class="columns is-centered has-text-centered"style="margin-top: -20px;">
+  <div class="column is-four-fifths">
+    <h2 class="title is-2">Comparison</h2>
+  </div>
+</div>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="new-carousel-container" class="carousel-container">
+
+        <div class="new-layout-item">
+          <div class="top-content">
+            <div class="image-container">
+              <img src="static\assets\comparison\1.png" alt="Overview Image" class="overview-image" style="position: relative; left: 55px; top: 0px;">
+            </div>
+            <div class="description-container">
+              <p class="overview-description">A woman with long dark hair, wearing dangling earrings and traditional attire with a red collar, is engaged in a conversation with another person. With subtle head movements and slight shifts in her gaze ... Her demeanor transitions from a neutral look to a gentle smile ...</p>
+            </div>
+          </div>
+
+          <div class="six-videos">
+
+
+            <div class="video-row">
+              
+              <div class="video-item">
+                <div class="media-wrapper">
+                  <video class="media-content animator-video" 
+                         style="transform: translateX(75px);" 
+                         autoplay controls muted loop playsinline>
+                    <source src="static\assets\comparison\1-animator.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <p class="bottom-text" style="font-size: 25px; color: #333;">ID-Animator</p>
+              </div>
+
+              <div class="video-item">
+                <video class ="ConsisID-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\1-consisid.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">ConsisID</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "FantasyID-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\1-fantasy.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text" style="font-size: 25px; color: #333;">FantasyID</p>
+              </div>
+            </div>
+
+
+            <div class="video-row">
+              <div class="video-item">
+                <video class = "Concat-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\1-concat.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">Concat-ID</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "EchoVideo-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\1-echo.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">EchoVideo</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "Proteus-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\1-ours.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">Proteus-ID</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="new-layout-item">
+          <div class="top-content2">
+            <div class="image-container" style="position: relative; left: -5px; top: 0px;">
+              <img src="static\assets\comparison\2.png" alt="Overview Image" class="overview-image">
+            </div>
+            <div class="description-container" style="position: relative; left: 0px; top: 0px;">
+              <p class="overview-description">A man with brown short hair, wearing black-framed glasses and a dark navy sweater, meticulously adjusts camera settings in a studio, slightly leaning in as he aligns the viewfinder. He carefully sets the tripod height, frames the shot with his hands, and gently presses the shutter button ...</p>
+            </div>
+          </div>
+
+          <div class="six-videos">
+
+
+            <div class="video-row">
+              
+              <div class="video-item">
+                <div class="media-wrapper">
+                  <video class="media-content animator-video" 
+                         style="transform: translateX(75px);" 
+                         autoplay controls muted loop playsinline>
+                    <source src="static\assets\comparison\2-animator.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <p class="bottom-text" style="font-size: 25px; color: #333;">ID-Animator</p>
+              </div>
+
+              <div class="video-item">
+                <video class ="ConsisID-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\2-consisid.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">ConsisID</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "FantasyID-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\2-fantasy.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text" style="font-size: 25px; color: #333;">FantasyID</p>
+              </div>
+            </div>
+
+
+            <div class="video-row">
+              <div class="video-item">
+                <video class = "Concat-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\2-concat.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">Concat-ID</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "EchoVideo-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\2-echo.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">EchoVideo</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "Proteus-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\2-ours.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">Proteus-ID</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="new-layout-item">
+          <!-- 向左移动更多 -->
+          <div class="top-content3" style="transform: translateX(-65px);">
+            <div class="image-container">
+              <img src="static\assets\comparison\3.png" alt="Overview Image" class="overview-image">
+            </div>
+            <div class="description-container">
+              <p class="overview-description">A man with brown short hair, wearing black-framed glasses and a dark navy sweater, meticulously adjusts camera settings in a studio, slightly leaning in as he aligns the viewfinder. He carefully sets the tripod height, frames the shot with his hands, and gently presses the shutter button ...</p>
+            </div>
+          </div>
+
+          <div class="six-videos">
+
+
+            <div class="video-row">
+              
+              <div class="video-item">
+                <div class="media-wrapper">
+                  <video class="media-content animator-video" 
+                         style="transform: translateX(75px);" 
+                         autoplay controls muted loop playsinline>
+                    <source src="static\assets\comparison\3-animator.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <p class="bottom-text" style="font-size: 25px; color: #333;">ID-Animator</p>
+              </div>
+
+              <div class="video-item">
+                <video class ="ConsisID-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\3-consisid.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">ConsisID</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "FantasyID-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\3-fantasy.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text" style="font-size: 25px; color: #333;">FantasyID</p>
+              </div>
+            </div>
+
+
+            <div class="video-row">
+              <div class="video-item">
+                <video class = "Concat-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\3-concat.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">Concat-ID</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "EchoVideo-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\3-echo.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">EchoVideo</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "Proteus-video" autoplay controls muted loop playsinline>
+                  <source src="static\assets\comparison\3-ours.mp4" type="video/mp4">
+                </video>
+                <p class="bottom-text">Proteus-ID</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        
+
+        <div class="new-layout-item">
+
+          <div class="top-content">
+            <div class="image-container">
+              <img src="https://github.com/user-attachments/assets/c43e6ce7-8334-4af0-8b9c-d1ac2e10b2a9" alt="Overview Image" class="overview-image">
+            </div>
+            <div class="description-container">
+              <p class="overview-description">The video depicts a young woman sitting at a wooden desk, deeply engrossed in her work. She is wearing glasses and has long hair that falls over her shoulders. The woman appears to be focused on a document or piece of paper in front of her, as she writes with a pen ......</p>
+            </div>
+          </div>
+
+
+          <div class="six-videos">
+
+
+            <div class="video-row">
+              
+              <div class="video-item">
+                <video autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/88b2dff1-c446-410f-981e-d45f8559c2b6" type="video/mp4">
+                </video>
+                <p class="bottom-text">Consis-ID</p>
+              </div>
+
+              <div class="video-item">
+                <video class ="DreamVideo-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/2de98c8a-ac99-499d-8419-652548ac3213" type="video/mp4">
+                </video>
+                <p class="bottom-text">DreamVideo</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "idAnimator-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/8d0e0dc7-81dc-42db-9ba4-cdd5a9ec0939" type="video/mp4">
+                </video>
+                <p class="bottom-text">ID-Animator</p>
+              </div>
+            </div>
+
+
+            <div class="video-row">
+              <div class="video-item">
+                <video class = "Magicme-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/aaa0ab74-2b09-4de9-a51d-4acb57fb111b" type="video/mp4">
+                </video>
+                <p class="bottom-text">MagicMe</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "vidu-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/a59e81a7-972d-4d77-a858-90e9dcf1ea4d" type="video/mp4">
+                </video>
+                <p class="bottom-text">MotionBooth</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "vidu-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/f8ac1766-4bb7-4864-8176-74611576d3f7" type="video/mp4">
+                </video>
+                <p class="bottom-text">Vidu</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="new-layout-item">
+
+          <div class="top-content">
+            <div class="image-container">
+              <img src="https://github.com/user-attachments/assets/a0b147ec-5d4b-4d53-830d-9e3b57fb93e2" alt="Overview Image" class="overview-image">
+            </div>
+            <div class="description-container">
+              <p class="overview-description">The video features a man sitting at a desk in front of a large screen displaying an American flag. he is wearing a plaid shirt and appears to be delivering a news report or commentary. The background behind his consists of a large screen with the American flag displayed prominently ......</p>
+            </div>
+          </div>
+
+
+          <div class="six-videos">
+
+
+            <div class="video-row">
+              
+              <div class="video-item">
+                <video autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/ab78e603-30b0-45c1-b05b-244395d28d74" type="video/mp4">
+                </video>
+                <p class="bottom-text">Consis-ID</p>
+              </div>
+
+              <div class="video-item">
+                <video class ="DreamVideo-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/065510cd-a295-478b-b605-2b1a46b2e903" type="video/mp4">
+                </video>
+                <p class="bottom-text">DreamVideo</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "idAnimator-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/360cc5d5-ac93-46c0-8e9f-e7b64409766e" type="video/mp4">
+                </video>
+                <p class="bottom-text">ID-Animator</p>
+              </div>
+            </div>
+
+
+            <div class="video-row">
+              <div class="video-item">
+                <video class = "Magicme-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/36f11603-bbd8-4e1e-be99-caa54c8334eb" type="video/mp4">
+                </video>
+                <p class="bottom-text">MagicMe</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "vidu-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/ddf8e86b-0e6b-4492-b005-88d2771ce694" type="video/mp4">
+                </video>
+                <p class="bottom-text">MotionBooth</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "vidu-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/34da5731-bceb-4169-9569-c18dd07116be" type="video/mp4">
+                </video>
+                <p class="bottom-text">Vidu</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <div class="new-layout-item">
+
+          <div class="top-content">
+            <div class="image-container">
+              <img src="https://github.com/user-attachments/assets/c587d46c-1a55-4ef4-9aca-44c37292eed7" alt="Overview Image" class="overview-image">
+            </div>
+            <div class="description-container">
+              <p class="overview-description">A man gazing thoughtfully at far away, with a serene expression that reveals a slight furrowing of the brow and a softening around the eyes. His lips part subtly, as if caught in a moment of contemplation or inspiration. The open field around him is expansive ......</p>
+            </div>
+          </div>
+
+
+          <div class="six-videos">
+
+
+            <div class="video-row">
+              
+              <div class="video-item">
+                <video autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/9e5cc8fa-16e3-41c7-b324-ca85222cc325" type="video/mp4">
+                </video>
+                <p class="bottom-text">Consis-ID</p>
+              </div>
+
+              <div class="video-item">
+                <video class ="DreamVideo-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/4e0a3d0e-2d6e-4eeb-8b5d-2f42f28c186d" type="video/mp4">
+                </video>
+                <p class="bottom-text">DreamVideo</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "idAnimator-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/91e41051-2659-4484-8521-5eea828970b8" type="video/mp4">
+                </video>
+                <p class="bottom-text">ID-Animator</p>
+              </div>
+            </div>
+
+
+            <div class="video-row">
+              <div class="video-item">
+                <video class = "Magicme-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/99aaec38-83ee-4887-8a7a-9e1ef49f6805" type="video/mp4">
+                </video>
+                <p class="bottom-text">MagicMe</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "vidu-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/e38d9450-49b2-4395-9dca-faff6c3e7128" type="video/mp4">
+                </video>
+                <p class="bottom-text">MotionBooth</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "vidu-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/d5a59467-ff58-43a5-8d09-b5179201dbfb" type="video/mp4">
+                </video>
+                <p class="bottom-text">Vidu</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <div class="new-layout-item">
+
+          <div class="top-content">
+            <div class="image-container">
+              <img src="https://github.com/user-attachments/assets/43a1449c-6c36-463e-83b1-c4ad69331bc6" alt="Overview Image" class="overview-image">
+            </div>
+            <div class="description-container">
+              <p class="overview-description">The video features a man standing in front of a large screen displaying the words ""Tech Minute"" and the logo for CNET. he is wearing a purple top and appears to be presenting or speaking about technology-related topics ......</p>
+            </div>
+          </div>
+
+
+          <div class="six-videos">
+
+
+            <div class="video-row">
+              
+              <div class="video-item">
+                <video autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/6246f271-52a0-4560-b58a-874b82732953" type="video/mp4">
+                </video>
+                <p class="bottom-text">Consis-ID</p>
+              </div>
+
+              <div class="video-item">
+                <video class ="DreamVideo-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/677d97b3-3995-4720-80bc-9e98f98ccf98" type="video/mp4">
+                </video>
+                <p class="bottom-text">DreamVideo</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "idAnimator-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/03b4d2e7-f754-4a4f-8d6a-80cd6e0a9332" type="video/mp4">
+                </video>
+                <p class="bottom-text">ID-Animator</p>
+              </div>
+            </div>
+
+
+            <div class="video-row">
+              <div class="video-item">
+                <video class = "Magicme-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/c8695c2f-3dd5-4876-b9d5-582aaba479c3" type="video/mp4">
+                </video>
+                <p class="bottom-text">MagicMe</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "vidu-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/8c6e781e-8ae3-48ab-8276-826a3c821fba" type="video/mp4">
+                </video>
+                <p class="bottom-text">MotionBooth</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "vidu-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/3edaf42a-f999-42aa-937d-5aecc93f5a21" type="video/mp4">
+                </video>
+                <p class="bottom-text">Vidu</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="new-layout-item">
+
+          <div class="top-content">
+            <div class="image-container">
+              <img src="https://github.com/user-attachments/assets/38c376fa-cdce-4cbb-bef6-845477936353" alt="Overview Image" class="overview-image">
+            </div>
+            <div class="description-container">
+              <p class="overview-description">The video features a young man who appears to be a content creator or streamer. he is wearing a green sleeveless top and red headphones. The background is illuminated with vibrant neon lights, predominantly in shades of purple and blue, creating a lively and energetic atmosphere ......</p>
+            </div>
+          </div>
+
+
+          <div class="six-videos">
+
+
+            <div class="video-row">
+              
+              <div class="video-item">
+                <video autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/714c2d93-7d92-4d68-b620-08bf1c92251c" type="video/mp4">
+                </video>
+                <p class="bottom-text">Consis-ID</p>
+              </div>
+
+              <div class="video-item">
+                <video class ="DreamVideo-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/c16ffe80-2dcf-45ae-bd72-c23e5469bdf3" type="video/mp4">
+                </video>
+                <p class="bottom-text">DreamVideo</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "idAnimator-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/15677650-19cb-43ec-8a68-0f2d32508671" type="video/mp4">
+                </video>
+                <p class="bottom-text">ID-Animator</p>
+              </div>
+            </div>
+
+
+            <div class="video-row">
+              <div class="video-item">
+                <video class = "Magicme-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/54e02179-ebb3-4f3b-a926-f2a8823c9b79" type="video/mp4">
+                </video>
+                <p class="bottom-text">MagicMe</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "vidu-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/195f481a-4766-4641-8ec9-497a08f2f9e0" type="video/mp4">
+                </video>
+                <p class="bottom-text">MotionBooth</p>
+              </div>
+
+              <div class="video-item">
+                <video class = "vidu-video" autoplay controls muted loop playsinline>
+                  <source src="https://github.com/user-attachments/assets/19d9452a-d45a-4771-a8a8-de950fc21028" type="video/mp4">
+                </video>
+                <p class="bottom-text">Vidu</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div id="new-pagination-dots" class="pagination-dots"></div>
+      <button class="new-layout-nav prev" onclick="prevNewSlide()">&#10094;</button>
+      <button class="new-layout-nav next" onclick="nextNewSlide()">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+<div class="columns is-centered has-text-centered" style="margin-top: 80px;">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Visual Results</h2>
+  </div>
+</div>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="carousel-container" class="carousel-container">
+        
+        
+        <div class="carousel-item">
+
+          <div class="images-row">
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/be0257b5-9d90-47ba-93f4-5faf78fd1859" alt="Image 1">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/c1418804-3e5b-4f8b-87f1-25d4ddeee99e" alt="Image 2">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/2c4ea113-47cd-4295-b643-a10e2a566823" alt="Image 3">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/d48cb0be-0a64-40fa-8f86-ac406548d592" alt="Image 4">
+            </div>
+          </div>
+
+
+          <div class="videos-grid">
+            <div class="video-item">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/97fa0710-4f14-4a6d-b6f7-f3a2e9f7486e" type="video/mp4">
+              </video>
+              <p>The video features a woman in exquisite hybrid armor adorned with iridescent gemstones, standing amidst gently falling cherry blossoms. Her piercing yet serene gaze hints at quiet determination, as a breeze catches a loose strand of her hair ...... </p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/90b547a3-247c-4bb0-abae-ba53483b7b6e" type="video/mp4">
+              </video>
+              <p>The video features a baby wearing a bright superhero cape, standing confidently with arms raised in a powerful pose. The baby has a determined look on their face, with eyes wide and lips pursed in concentration, as if ready to take on a challenge ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="blueshirt" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/e4bc3169-d3d4-46e2-a667-8b456ead9465" type="video/mp4">
+              </video>
+              <p>The video captures a boy walking along a city street, filmed in black and white on a classic 35mm camera. His expression is thoughtful, his brow slightly furrowed as if he's lost in contemplation. The film grain adds a textured ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="mask" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/f60f278f-aaa3-43e5-8c8e-faa1478e8105" type="video/mp4">
+              </video>
+              <p>The video features a man standing at an easel, focused intently as his brush dances across the canvas. His expression is one of deep concentration, with a hint of satisfaction as each brushstroke adds color and form ......</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item">
+
+          <div class="images-row">
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/0f8735a4-7ea9-40fa-9887-bba03e383a1a" alt="Image 1">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/942078e4-40e6-4740-bb1b-d09461e415b5" alt="Image 2">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/e8845034-c21f-48e8-bf12-04bfb10d9451" alt="Image 3">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/4efbc3b7-2fae-4060-892d-c462ee8ed2fe" alt="Image 4">
+            </div>
+          </div>
+
+
+          <div class="videos-grid">
+            <div class="video-item">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/12825c80-35cd-4326-ac02-38001065f3f9" type="video/mp4">
+              </video>
+              <p>A woman sitting by a window in a cozy cafe, enjoying a cup of coffee. Her eyes softly gaze out the window, reflecting a sense of contentment. Her lips part slightly into a serene smile, the corners of her mouth gently lifting ...... </p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/e4e3e519-95d4-44e0-afa7-9a833f99e090" type="video/mp4">
+              </video>
+              <p>The video features a young man standing outdoors in a snowy park. he is wearing a colorful winter jacket with a floral pattern and a white knit hat And he smiles and gives a thumbs-up gesture towards the camera ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="blueshirt" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/4fcd5617-40d1-47fc-92f1-9dd1c575f30c" type="video/mp4">
+              </video>
+              <p>The video features a woman standing outdoors in a serene, natural setting. The woman has long blonde hair and is wearing a light-colored, long dress with a delicate pattern ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="mask" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/93e9a8b8-c427-4b8c-8982-74fb9146ca62" type="video/mp4">
+              </video>
+              <p>The video features a young woman with long blonde hair standing in front of a lush, green bush adorned with white flowers. She is wearing a black top and appears to be enjoying the natural surroundings ......</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item">
+
+          <div class="images-row">
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/b07c9373-151f-4dad-9233-71c2e293bd49" alt="Image 1">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/3775662b-e76f-47fb-8a64-cf47bbbb7f0f" alt="Image 2">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/4cf0f4b1-59c8-4ee1-af93-cacd703d6efe" alt="Image 3">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/cdf569e4-2b44-4a5f-9c38-49cd136886ab" alt="Image 4">
+            </div>
+          </div>
+
+
+          <div class="videos-grid">
+            <div class="video-item">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/88380ee8-8699-434a-b411-52b8da396993" type="video/mp4">
+              </video>
+              <p>The video features a man walking down a city street at night, engrossed in his smartphone. He is dressed in a formal suit and tie, suggesting he might be a professional or businessman ...... </p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/8cd61cd4-f8a0-4f84-b2c8-4746dada4e70" type="video/mp4">
+              </video>
+              <p>The video features a woman standing in front of a large screen displaying the words ""Tech Minute"" and the logo for CNET. She is wearing a purple top and appears to be presenting or speaking about technology-related topics ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="blueshirt" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/55680c58-de86-48b4-8d86-e9906a3185c3" type="video/mp4">
+              </video>
+              <p>The video features a man standing next to an airplane, engaged in a conversation on his cell phone. he is wearing sunglasses and a black top, and he appears to be talking seriously ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="mask" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/8d06e702-f80e-4cb2-abc2-b0f519ec3f11" type="video/mp4">
+              </video>
+              <p>The video features a woman with blonde hair standing on a beach near the water's edge. She is wearing a black swimsuit and appears to be enjoying her time by the sea. The sky above is clear with some clouds ......</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item">
+
+          <div class="images-row">
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/27f4ab32-4c3d-4ecd-b87a-b198ba27bf51" alt="Image 1">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/2ce2d135-7326-4fe6-9559-d956ed50b4a7" alt="Image 2">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/0c06bdfb-7f03-4ae0-8f69-a257735aa70b" alt="Image 3">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/c70f8bf3-3bd9-46d0-8529-f3f6c4fd180b" alt="Image 4">
+            </div>
+          </div>
+
+
+          <div class="videos-grid">
+            <div class="video-item">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/fbbd60b5-3517-49bd-8a98-16953c17d8a6" type="video/mp4">
+              </video>
+              <p>The video features a woman with blonde hair, wearing a blue tank top and holding a pink tank top on a hanger. She appears to be in a clothing store or a similar retail environment, as there are racks of clothes visible in the background ...... </p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/ab9c655e-84c2-47ed-85d9-039a7f64adfe" type="video/mp4">
+              </video>
+              <p>The video features a man sitting in a red armchair, enjoying a cup of coffee or tea. he is dressed in a light-colored outfit and has long dark-haired hair. The setting appears to be indoors ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="blueshirt" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/8014b02e-e1c4-4df7-b7f3-cebfb01fa373" type="video/mp4">
+              </video>
+              <p>The video shows a young boy sitting at a table, eating a piece of food. He appears to be enjoying his meal, as he takes a bite and chews it. The boy is wearing a blue shirt and has short hair. The background is dark ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="mask" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/0202495f-1449-4e87-b5c3-8f82a5be9ce9" type="video/mp4">
+              </video>
+              <p>A woman with an anticipatory smile, her eyes twinkling with excitement as she holds a camera, poised to capture a perfect moment. Her face is animated with enthusiasm; her lips slightly parted as she concentrates on framing the shot ......</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item">
+
+          <div class="images-row">
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/669a39d9-e7c3-4d60-8188-c8eb74803d46" alt="Image 1">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/3d1a11b4-68e5-4eee-bb12-6940e3b8dab3" alt="Image 2">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/c20217b9-5a65-4477-ad5d-7af49105c63b" alt="Image 3">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/e38e2e8a-87a6-446a-ac93-82dba722c0ed" alt="Image 4">
+            </div>
+          </div>
+
+
+          <div class="videos-grid">
+            <div class="video-item">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/43471a25-65e4-4e13-86ae-83018a3e35a0" type="video/mp4">
+              </video>
+              <p>A woman wearing a colorful scarf and cozy sweater, her eyes sparkling with a hint of wonder as she looks around at the falling leaves. Her lips curl into a slight, content smile, adding a touch of warmth to the cool air ...... </p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/5e0d6b55-f27a-4ff3-8ae8-d57889fe1e93" type="video/mp4">
+              </video>
+              <p>The video features a news reporter who is walking down a city street at night while holding a microphone and speaking to the camera. The reporter is wearing a white coat and a blue tie ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="blueshirt" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/f981c3eb-77dd-4950-8161-f5ce9afb3714" type="video/mp4">
+              </video>
+              <p>The video features a man jogging along a grassy path next to a body of water, likely a lake or river. he is wearing a white sports bra and appears to be focused on his run.The background shows a serene outdoor setting with green trees ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="mask" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/b694f56e-71b7-4941-bc30-16b8b5de9095" type="video/mp4">
+              </video>
+              <p>The video features a woman dressed as a mermaid, swimming underwater. She is wearing a silver tail and a matching top, which is adorned with colorful patterns. The woman has long, wavy hair that flows freely underwater ......</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item">
+
+          <div class="images-row">
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/ffa79f1d-b462-4c1e-9a08-5e4702217bbc" alt="Image 1">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/21cbb423-996d-4952-b32b-52312081bf5f" alt="Image 2">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/8580b3c1-75f4-4391-8b09-f309b0efbce6" alt="Image 3">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/81af5ec8-1b6a-4882-bd66-3926501f7fd8" alt="Image 4">
+            </div>
+          </div>
+
+
+          <div class="videos-grid">
+            <div class="video-item">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/ab34518b-d5bd-404c-b4bb-59e748dfb6f8" type="video/mp4">
+              </video>
+              <p>The video features a man dressed in a blue suit and tie, sitting in a newsroom setting. The background includes a large screen displaying various news graphics and text. The man appears to be a news anchor or host ...... </p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/3c787f08-d0c0-4a50-bf2c-9d540b1e8f2f" type="video/mp4">
+              </video>
+              <p>The video depicts a young man engaged in an intense gaming session. he is seated in a gaming chair, which is designed to provide ergonomic support and comfort during extended periods of use. The chair has a distinctive design ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="blueshirt" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/a6b8c84f-ddec-4381-a44d-60f735be9390" type="video/mp4">
+              </video>
+              <p>The video features a young man walking through a park during sunset. he is wearing a sleeveless top with a geometric pattern and denim shorts. The man has long, dark hair that falls over his shoulders. In his hands, he holds a skateboard ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="mask" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/ffed24f8-3bab-43aa-92fd-ae4e0e0d61f1" type="video/mp4">
+              </video>
+              <p>The video depicts a young man sitting at a wooden desk, deeply engrossed in his work. he is wearing glasses and has long hair that falls over his shoulders. The man appears to be focused on a document or piece of paper in front of him ......</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item">
+
+          <div class="images-row">
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/df699577-9c6b-4e3f-9cb8-0186e6895ae3" alt="Image 1">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/0e349453-546d-4f67-b330-bef035297d46" alt="Image 3">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/d65cc74d-413d-42b4-b342-a6c507c68eb9" alt="Image 3">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/b724628c-a2fe-43f1-8438-dffdc7084a9a" alt="Image 4">
+            </div>
+          </div>
+
+
+          <div class="videos-grid">
+            <div class="video-item">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/fd7b9b27-1e0a-4559-8eca-e993feab4f41" type="video/mp4">
+              </video>
+              <p>A woman adorned with a delicate flower crown, is standing amidst a field of gently swaying wildflowers. Her eyes sparkle with a serene gaze, and a faint smile graces her lips, suggesting a moment of peaceful contentment ...... </p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="blueshirt" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/54ac6679-c091-4f36-8361-15419d8f1808" type="video/mp4">
+              </video>
+              <p>The video features a news reporter who is walking down a city street at night while holding a microphone and speaking to the camera. The reporter is wearing a white coat and a blue tie, and he appears to be reporting on a story ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="blueshirt" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/53f75975-013d-4a5d-a0bf-b60c6cd2dab1" type="video/mp4">
+              </video>
+              <p>The video depicts a young girl walking through a greenhouse filled with lush green plants and vegetables. She is wearing a white dress and appears to be enjoying her time in the garden. The greenhouse has a wooden structure ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="mask" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/6021e63a-4eaf-4778-aae2-aaa3e7bb10dc" type="video/mp4">
+              </video>
+              <p>The video features a man standing in front of the camera, his gaze focused and intense as he holds the basketball. He is dressed in athletic gear, his posture exuding concentration. The basketball is positioned firmly in his hands ......</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item">
+
+          <div class="images-row">
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/f05375ea-4e0f-4930-ba21-6ac2de8eea61" alt="Image 1">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/02ba2ec6-34c8-4417-ae90-0323b9919b43" alt="Image 2">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/bfa951a7-b5c5-4880-9ba6-55f566c12945" alt="Image 2">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/733f0ed3-1064-42fc-8f24-2dc6d065fe7f" alt="Image 4">
+            </div>
+          </div>
+
+
+          <div class="videos-grid">
+            <div class="video-item">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/f0bb10da-50c2-4a2e-832a-a8ad5f97983c" type="video/mp4">
+              </video>
+              <p>The video features a man with dark-haired hair, wearing a blue tank top and holding a pink tank top on a hanger. he appears to be in a clothing store or a similar retail environment, as there are racks of clothes visible in the background ...... </p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/54b5690d-d597-41fa-8f6d-9434589a8153" type="video/mp4">
+              </video>
+              <p>The video features a woman walking down a city street at night, engrossed in her smartphone. she is dressed in a formal suit and tie, suggesting she might be a professional or businessman. The street is illuminated with various neon lights ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/6c3f8f38-ab4e-49bb-9490-f99faf9c0ffd" type="video/mp4">
+              </video>
+              <p>The video features a woman dressed as a mermaid, swimming underwater. She is wearing a silver tail and a matching top, which is adorned with colorful patterns. The woman has long, wavy hair that flows freely underwater ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="mask" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/6e361373-f633-47fb-b677-57d3fb6ea183" type="video/mp4">
+              </video>
+              <p>The video features a news reporter who is walking down a city street at night while holding a microphone and speaking to the camera. The reporter is wearing a white coat and a blue tie, and he appears to be reporting on a story ......</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item">
+
+          <div class="images-row">
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/2e6584ea-2d02-4ba6-a938-496e683839b9" alt="Image 1">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/ee5e62fc-c21a-4931-a4b1-e5aa3840f81f" alt="Image 2">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/541fd662-da71-407f-aa07-b597b3636d2d" alt="Image 3">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/1b6d39ea-c8da-4e5d-b370-c5cd594af1e1" alt="Image 4">
+            </div>
+          </div>
+
+
+          <div class="videos-grid">
+            <div class="video-item">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/4e22bda2-33e5-4846-b2c1-f07293dc818a" type="video/mp4">
+              </video>
+              <p>The video features a woman standing outdoors in a serene, natural setting. She is leaning against a tall, white column that is part of a larger structure, possibly a gazebo or pavilion. The woman has long blonde hair ...... </p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/bb6b66f5-86d8-4c02-94b1-571a06aaaee6" type="video/mp4">
+              </video>
+              <p>The video features a man walking down a city street at night, engrossed in his smartphone. He is dressed in a formal suit and tie, suggesting he might be a professional or businessman. The street is illuminated with various neon lights ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="blueshirt" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/aa68cbbc-1112-448e-9736-a03d9182f47f" type="video/mp4">
+              </video>
+              <p>The video depicts a man sitting at an office desk, engaged in his work. He is dressed in a formal suit and appears to be focused on his computer screen. The office environment is well-organized, with shelves filled with binders ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="mask" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/faca28dd-9490-4721-94e0-d1c2b867dd0d" type="video/mp4">
+              </video>
+              <p>The video depicts a young man sitting at a wooden desk, deeply engrossed in his work. he is wearing glasses and has long hair that falls over his shoulders. The man appears to be focused on a document or piece of paper in front of his ......</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item">
+
+          <div class="images-row">
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/8ee4412b-447a-431c-9808-a2736bf2f3b4" alt="Image 1">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/673c2be3-e0cc-4315-8273-f1b69c724ad3" alt="Image 2">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/5972fb0d-1087-42af-925a-4d25b76b2d58" alt="Image 3">
+            </div>
+            <div class="image-item">
+              <img src="https://github.com/user-attachments/assets/1325807a-03b6-4bbd-86ee-39263678a309" alt="Image 4">
+            </div>
+          </div>
+
+
+          <div class="videos-grid">
+            <div class="video-item">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/f95b30e4-3782-4688-9f80-b74ed7399fc8" type="video/mp4">
+              </video>
+              <p>The video features a little girl with pigtails, a backpack, and a bright smile, skipping joyfully down a bustling city street. She holds a bunch of colorful balloons that sway as she moves, her eyes wide with excitement. The backdrop of vibrant buildings ...... </p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/5b31b85f-a2ea-463c-993a-270a002547f8" type="video/mp4">
+              </video>
+              <p>The video features a girl sitting on a stool, playing a guitar with her fingers moving skillfully across the strings, creating a soulful melody. Her eyes are closed, and there's a slight smile on her face ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="blueshirt" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/8abc88d8-4846-4949-825a-652a3ac2c349" type="video/mp4">
+              </video>
+              <p>The video features a man with a rugged beard, wearing a leather jacket, riding a vintage motorcycle along a desert highway. His expression is focused, eyes narrowed slightly against the wind, as the setting sun casts a warm glow ......</p>
+            </div>
+            <div class="video-item">
+              <video poster="" id="mask" autoplay controls muted loop playsinline>
+                <source src="https://github.com/user-attachments/assets/80a836e7-3776-47fa-8e65-20d3ffacec07" type="video/mp4">
+              </video>
+              <p>The video shows a man celebrating his birthday, holding a piece of cake while he prepares to blow out the candles. He is smiling warmly, and as he closes his eyes to make a wish, a hint of emotion crosses his face—perhaps a moment of nostalgia ......</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="pagination-dots" class="pagination-dots"></div>
+      <button class="layout-nav prev" onclick="prevSlide()">&#10094;</button>
+      <button class="layout-nav next" onclick="nextSlide()">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const items = document.querySelectorAll('.carousel-item');
+    const paginationDotsContainer = document.getElementById('pagination-dots');
+
+
+    items.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (index === 0) {
+            dot.classList.add('active'); 
+        }
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        });
+        paginationDotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('#pagination-dots .dot');
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+
+        if (index >= items.length) {
+            currentSlide = 0; 
+        } else if (index < 0) {
+            currentSlide = items.length - 1;  
+        } else {
+            currentSlide = index;
+        }
+
+
+        items.forEach((item, i) => {
+            item.classList.remove('active');
+            if (i === currentSlide) {
+                item.classList.add('active');
+            }
+        });
+
+
+        dots.forEach((dot, i) => {
+            dot.classList.remove('active');
+            if (i === currentSlide) {
+                dot.classList.add('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+
+    document.querySelector('.layout-nav.prev').addEventListener('click', prevSlide);
+    document.querySelector('.layout-nav.next').addEventListener('click', nextSlide);
+
+
+    showSlide(currentSlide);
+
+
+    const newItems = document.querySelectorAll('.new-layout-item');
+    const newPaginationDotsContainer = document.getElementById('new-pagination-dots');
+
+
+    newItems.forEach((_, index) => {
+        const newDot = document.createElement('span');
+        newDot.classList.add('new-dot');
+        if (index === 0) {
+            newDot.classList.add('active'); 
+        }
+        newDot.addEventListener('click', () => {
+            currentNewSlide = index;
+            showNewSlide(currentNewSlide);
+        });
+        newPaginationDotsContainer.appendChild(newDot);
+    });
+
+    const newDots = document.querySelectorAll('#new-pagination-dots .new-dot');
+
+    let currentNewSlide = 0;
+
+    function showNewSlide(index) {
+
+        if (index >= newItems.length) {
+            currentNewSlide = 0;  
+        } else if (index < 0) {
+            currentNewSlide = newItems.length - 1; 
+        } else {
+            currentNewSlide = index;
+        }
+
+
+        newItems.forEach((item, i) => {
+            item.classList.remove('active');
+            if (i === currentNewSlide) {
+                item.classList.add('active');
+            }
+        });
+
+
+        newDots.forEach((newDot, i) => {
+            newDot.classList.remove('active');
+            if (i === currentNewSlide) {
+                newDot.classList.add('active');
+            }
+        });
+    }
+
+    function nextNewSlide() {
+        showNewSlide(currentNewSlide + 1);
+    }
+
+    function prevNewSlide() {
+        showNewSlide(currentNewSlide - 1);
+    }
+
+
+    document.querySelector('.new-layout-nav.prev').addEventListener('click', prevNewSlide);
+    document.querySelector('.new-layout-nav.next').addEventListener('click', nextNewSlide);
+
+
+    showNewSlide(currentNewSlide);
+});
+
+</script>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{yuan2024identity,
+  title={Identity-Preserving Text-to-Video Generation by Frequency Decomposition},
+  author={Yuan, Shenghai and Huang, Jinfa and He, Xianyi and Ge, Yunyuan and Shi, Yujun and Chen, Liuhan and Luo, Jiebo and Yuan, Li},
+  journal={arXiv preprint arXiv:2411.17440},
+  year={2024}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is constructed using the templet provided by <a
+                href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. Thanks for their effort.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
