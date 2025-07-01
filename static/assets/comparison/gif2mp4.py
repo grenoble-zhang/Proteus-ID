@@ -1,8 +1,8 @@
 from moviepy.editor import VideoFileClip
 
 # 转换单个文件
-clip = VideoFileClip("3-animator.gif")
-clip.write_videofile("3-animator.mp4", fps=25)
+clip = VideoFileClip("4-animator.gif")
+clip.write_videofile("4-animator.mp4", fps=25)
 
 # 批量转换
 import os
