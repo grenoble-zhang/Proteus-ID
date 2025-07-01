@@ -10,7 +10,7 @@
 
 Authors: [Guiyu Zhang](https://scholar.google.com/citations?user=NLPMoeAAAAAJ/)<sup>1</sup>, [Chen Shi](https://scholar.google.com.hk/citations?user=o-K_AoYAAAAJ&hl=en)<sup>1</sup>, Zijian Jiang<sup>1</sup>, Xunzhi Xiang<sup>2</sup>, Jingjing Qian<sup>1</sup>, [Shaoshuai Shi](https://shishaoshuai.com/)<sup>3</sup>, [Li Jiang†](https://llijiang.github.io/)<sup>1</sup>
 
-<sup>1</sup> The Chinese University of Hong Kong, Shenzhen <sup>2</sup> Nanjing University;
+<sup>1</sup> The Chinese University of Hong Kong, Shenzhen&emsp;<sup>2</sup> Nanjing University; 
 <sup>3</sup> Voyager Research, Didi Chuxing
 
 
