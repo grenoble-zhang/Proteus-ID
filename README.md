@@ -8,15 +8,19 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2506.23729-b31b1b.svg)](https://arxiv.org/abs/2506.23729)&nbsp;
 </div>
 
-Authors: [Guiyu Zhang\*](https://scholar.google.com/citations?user=NLPMoeAAAAAJ/)<sup>1,2</sup>, [Huan-ang Gao\*](https://c7w.tech/about/)<sup>2</sup>, Zijian Jiang<sup>2</sup>, [Hao Zhao†](https://sites.google.com/view/fromandto)<sup>2</sup>, [Zhedong Zheng†](https://www.zdzheng.xyz/)<sup>1</sup>
+Authors: [Guiyu Zhang\*](https://scholar.google.com/citations?user=NLPMoeAAAAAJ/)<sup>1</sup>, [Chen Shi\*](https://scholar.google.com.hk/citations?user=o-K_AoYAAAAJ&hl=en)<sup>1</sup>, Zijian Jiang<sup>1</sup>, Xunzhi Xiang<sup>2</sup>, Jingjing Qian<sup>1</sup>, [Shaoshuai Shi](https://shishaoshuai.com/)<sup>3</sup>, [Li Jiang†](https://llijiang.github.io/)<sup>1</sup>
 
-<sup>1</sup> FST, University of Macau&emsp;<sup>2</sup> AIR, Tsinghua University
+<sup>1</sup> The Chinese University of Hong Kong, Shenzhen&emsp;<sup>2</sup> Nanjing University;<sup>3</sup> Voyager Research, Didi Chuxing
+
 
 <img src="assets\representative_image.jpg" width="100%"/>
 
-> [**Proteus-ID: ID-Consistent and Motion-Coherent Video Customization**](https://grenoble-zhang.github.io/Proteus-ID/)                
-> uiyu Zhang, Chen Shi, Zijian Jiang, Xunzhi Xiang, Jingjing Qian, Shaoshuai Shi, Li Jiang                                     
-> *Preprint ([arXiv 2506.03079](https://arxiv.org/abs/2506.23729))*
+## TODO
+
+- [x] Release arXiv technique report
+- [ ] Release processed data (waiting for company review)
+- [ ] Release full codes
+
 
 ## BibTeX
 If you find our work useful in your research, please consider citing our paper:
@@ -28,14 +32,6 @@ If you find our work useful in your research, please consider citing our paper:
     year={2025}
 }
 ```
-
-## TODO
-
-- [x] Release arXiv technique report
-- [ ] Release processed data 
-- [ ] Release full codes
-
-
 
 ## Acknowledgement
 
