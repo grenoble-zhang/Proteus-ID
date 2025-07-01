@@ -19,14 +19,14 @@ Authors: [Guiyu Zhang](https://scholar.google.com/citations?user=NLPMoeAAAAAJ/)<
 ## TODO
 
 - [x] Release arXiv technique report
-- [ ] Release processed data (waiting for company review)
+- [ ] Release dataset (waiting for company review)
 - [ ] Release full codes
 
 
 ## BibTeX
 If you find our work useful in your research, please consider citing our paper:
 ```bibtex
-@article{yang2025orv,
+@article{
     title={Proteus-ID: ID-Consistent and Motion-Coherent Video Customization},
     author={Guiyu Zhang, Chen Shi, Zijian Jiang, Xunzhi Xiang, Jingjing Qian, Shaoshuai Shi, Li Jiang},
     journal={arXiv preprint arXiv:2506.23729},
