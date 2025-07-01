@@ -36,4 +36,4 @@ If you find our work useful in your research, please consider citing our paper:
 
 ## Acknowledgement
 
-Thansk for these excellent opensource works and models: [CogVideoX](https://github.com/THUDM/CogVideo); [ConsisID](https://github.com/PKU-YuanGroup/ConsisID); [diffusers](https://github.com/huggingface/diffusers);.
+Thansk for these excellent opensource works and models: [CogVideoX](https://github.com/THUDM/CogVideo); [ConsisID](https://github.com/PKU-YuanGroup/ConsisID); [diffusers](https://github.com/huggingface/diffusers).
