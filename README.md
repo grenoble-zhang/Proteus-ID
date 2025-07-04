@@ -26,11 +26,11 @@ Authors: [Guiyu Zhang](https://scholar.google.com/citations?user=NLPMoeAAAAAJ/)<
 ## BibTeX
 If you find our work useful in your research, please consider citing our paper:
 ```bibtex
-@article{
-    title={Proteus-ID: ID-Consistent and Motion-Coherent Video Customization},
-    author={Guiyu Zhang, Chen Shi, Zijian Jiang, Xunzhi Xiang, Jingjing Qian, Shaoshuai Shi, Li Jiang},
-    journal={arXiv preprint arXiv:2506.23729},
-    year={2025}
+@article{zhang2025proteus,
+  title={Proteus-ID: ID-Consistent and Motion-Coherent Video Customization},
+  author={Zhang, Guiyu and Shi, Chen and Jiang, Zijian and Xiang, Xunzhi and Qian, Jingjing and Shi, Shaoshuai and Jiang, Li},
+  journal={arXiv preprint arXiv:2506.23729},
+  year={2025}
 }
 ```
 
