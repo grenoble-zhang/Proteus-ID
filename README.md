@@ -20,7 +20,7 @@ Authors: [Guiyu Zhang](https://scholar.google.com/citations?user=NLPMoeAAAAAJ/)<
 
 - [x] Release arXiv technique report
 - [ ] Release dataset (waiting for company review)
-- [ ] Release full codes
+- [ ] Release full codes (waiting for company review)
 
 
 ## BibTeX
