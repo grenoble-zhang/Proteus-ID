@@ -19,8 +19,9 @@ Authors: [Guiyu Zhang](https://scholar.google.com/citations?user=NLPMoeAAAAAJ/)<
 ## TODO
 
 - [x] Release arXiv technique report
+- [x] Release full codes (waiting for company review)
 - [ ] Release dataset (waiting for company review)
-- [ ] Release full codes (waiting for company review)
+
 
 
 ## BibTeX
