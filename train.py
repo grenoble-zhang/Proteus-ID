@@ -7,6 +7,7 @@ import shutil
 import threading
 from datetime import timedelta
 from pathlib import Path
+
 import accelerate
 import insightface
 import numpy as np
@@ -462,8 +463,6 @@ def main(args):
             eva_transform_mean = (eva_transform_mean,) * 3
         if not isinstance(eva_transform_std, (list, tuple)):
             eva_transform_std = (eva_transform_std,) * 3
-        eva_transform_mean = eva_transform_mean
-        eva_transform_std = eva_transform_std
 
         device_id = accelerator.process_index % torch.cuda.device_count()
         face_main_model = FaceAnalysis(name='antelopev2', root=os.path.join(args.pretrained_model_name_or_path, "face_encoder"), providers=['CUDAExecutionProvider'], provider_options=[{"device_id": device_id}])
@@ -1291,19 +1290,19 @@ def main(args):
                     if patch_size_t is not None:
                         noisy_video_latents = torch.zeros(1, 14, 16, 60, 90).to(accelerator.device, dtype=weight_dtype)
                         noisy_model_input = torch.zeros(1, 14, temp_dim, 60, 90).to(accelerator.device, dtype=weight_dtype)
-                        image_rotary_emb     = (torch.zeros(9450, 64).to(accelerator.device, dtype=weight_dtype), torch.zeros(9450, 64).to(accelerator.device, dtype=weight_dtype))
+                        image_rotary_emb = (torch.zeros(9450, 64).to(accelerator.device, dtype=weight_dtype), torch.zeros(9450, 64).to(accelerator.device, dtype=weight_dtype))
                     else:
                         noisy_video_latents = torch.zeros(1, 13, 16, 60, 90).to(accelerator.device, dtype=weight_dtype)
                         noisy_model_input = torch.zeros(1, 13, temp_dim, 60, 90).to(accelerator.device, dtype=weight_dtype)
-                        image_rotary_emb     = (torch.zeros(17550, 64).to(accelerator.device, dtype=weight_dtype), torch.zeros(17550, 64).to(accelerator.device, dtype=weight_dtype))
+                        image_rotary_emb = (torch.zeros(17550, 64).to(accelerator.device, dtype=weight_dtype), torch.zeros(17550, 64).to(accelerator.device, dtype=weight_dtype))
                     prompt_embeds = torch.zeros(1, 226, 4096).to(accelerator.device, dtype=weight_dtype)
                     prompt_masks = torch.zeros(1, 226).to(accelerator.device, dtype=weight_dtype)
                     identity_prompt_embeds = torch.zeros(1, 32, 4096).to(accelerator.device, dtype=weight_dtype)
                     
-                    timesteps = torch.randint(0, scheduler.config.num_train_timesteps, (1,), device=video_latents.device)
+                    timesteps = torch.randint(0, scheduler.config.num_train_timesteps, (1,), device=accelerator.device)
                     timesteps = timesteps.long()
-                    ofs_emb   = torch.tensor([2.]).to(accelerator.device, dtype=weight_dtype)
-                    valid_id_conds       = torch.zeros(1, 1280).to(accelerator.device, dtype=weight_dtype)
+                    ofs_emb = torch.tensor([2.]).to(accelerator.device, dtype=weight_dtype)
+                    valid_id_conds = torch.zeros(1, 1280).to(accelerator.device, dtype=weight_dtype)
                     valid_id_vit_hiddens = [torch.zeros([1, 577, 1024]).to(accelerator.device, dtype=weight_dtype)] * 5
 
                 # Predict the noise residual
