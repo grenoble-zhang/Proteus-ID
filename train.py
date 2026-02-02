@@ -7,7 +7,6 @@ import shutil
 import threading
 from datetime import timedelta
 from pathlib import Path
-
 import accelerate
 import insightface
 import numpy as np
