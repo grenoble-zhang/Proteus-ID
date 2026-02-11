@@ -82,10 +82,11 @@ python inference.py --img_file_path assets/example_images/1.png --json_file_path
 ## BibTeX
 If you find our work useful in your research, please consider citing our paper:
 ```bibtex
-@article{zhang2025proteus,
-  title={Proteus-ID: ID-Consistent and Motion-Coherent Video Customization},
+@inproceedings{zhang2025proteus,
+  title={Proteus-id: Id-consistent and motion-coherent video customization},
   author={Zhang, Guiyu and Shi, Chen and Jiang, Zijian and Xiang, Xunzhi and Qian, Jingjing and Shi, Shaoshuai and Jiang, Li},
-  journal={arXiv preprint arXiv:2506.23729},
+  booktitle={Proceedings of the SIGGRAPH Asia 2025 Conference Papers},
+  pages={1--11},
   year={2025}
 }
 ```
